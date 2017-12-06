@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+  return redirect('/schools');
 });
 
 Route::resource('/schools', 'SchoolController');

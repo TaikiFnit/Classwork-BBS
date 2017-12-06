@@ -6,13 +6,20 @@ Create new Group
 
 @section('body')
 
-<h1>Create Comments</h1>
+<section class="container">
+<h1><a href="{{ action('BbsController@index', ['school_id'=>$school_id, 'lecture_id'=>$lecture->id]) }}">{{ $lecture->name }}</a>のグループを作成する</h1>
 
-<form action="{{ action('GroupController@store', ['school_id'=> $school_id, 'lecture_id'=> $lecture_id]) }}" method="POST">
+<form action="{{ action('GroupController@store', ['school_id'=> $school_id, 'lecture_id'=> $lecture->id]) }}" method="POST">
 
-  <input type="text" name="name" placeholder="Group Name">
+  <div class="form-group">
+    <label for="name">グループ名 : </label><input type="text" name="name" placeholder="グループ名" class="form-control">
+  </div>
+
   <input type="hidden" name="_token" value="{{csrf_token()}}">
-  <input type="submit" value="Create">
+  <div class="form-group">
+    <input type="submit" value="作成" class="btn btn-primary">
+  </div>
 </form>
+</section>
 
 @stop
