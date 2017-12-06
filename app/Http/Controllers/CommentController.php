@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Comment;
+use App\Bbs;
+use App\School;
 use Illuminate\Http\Request;
 
 class CommentController extends Controller
@@ -12,9 +14,10 @@ class CommentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($school_id, $lecture_id, $bbs_id)
     {
-        //
+        $bbs = Bbs::find($bbs_id);
+        return $bbs->comments;
     }
 
     /**
@@ -22,9 +25,10 @@ class CommentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($school_id, $lecture_id, $bbs_id)
     {
-        //
+        $schools = School::all();
+        return view('comments/create', ['school_id'=>$school_id, 'lecture_id'=> $lecture_id, 'bbs_id'=> $bbs_id, 'schools'=> $schools]);
     }
 
     /**
@@ -33,9 +37,16 @@ class CommentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $school_id, $lecture_id, $bbs_id)
     {
-        //
+        $comment = new Comment();
+        $comment->author_name = $request->input('author_name');
+        $comment->body = $request->input('body');
+
+        $bbs = Bbs::find($bbs_id);
+        $bbs->comments()->save($comment);
+
+        return redirect()->action('CommentController@index', ['school_id'=> $school_id, 'lectuer_id'=> $lecture_id, 'bbs_id'=> $bbs_id]);
     }
 
     /**

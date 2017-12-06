@@ -6,4 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Bbs extends Model
 {
+    public function comments() {
+    return $this->hasMany('App\Comment');
+  }
 }
