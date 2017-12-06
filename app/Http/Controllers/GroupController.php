@@ -16,7 +16,8 @@ class GroupController extends Controller
     public function index($school_id, $lecture_id)
     {
         $lecture = Lecture::find($lecture_id);
-        return $lecture->groups;
+        $groups = $lecture->groups;
+        return view('groups/index', ['groups'=> $groups, 'lecture'=> $lecture, 'school_id'=> $school_id]);
     }
 
     /**
@@ -26,7 +27,8 @@ class GroupController extends Controller
      */
     public function create($school_id, $lecture_id)
     {
-        return view('groups/create', ['school_id'=> $school_id, 'lecture_id'=> $lecture_id]);
+        $lecture = Lecture::find($lecture_id);
+        return view('groups/create', ['school_id'=> $school_id, 'lecture'=> $lecture]);
     }
 
     /**

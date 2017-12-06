@@ -15,7 +15,8 @@ class SchoolController extends Controller
     public function index()
     {
         // get school index, and reder them
-        return School::all();
+        $schools = School::all();
+        return view('schools/index', ['schools' => $schools]); 
     }
 
     /**
