@@ -14,7 +14,8 @@ class SchoolController extends Controller
      */
     public function index()
     {
-        //
+        // get school index, and reder them
+        return School::all();
     }
 
     /**
@@ -25,6 +26,7 @@ class SchoolController extends Controller
     public function create()
     {
         //
+        return  view('school/create');
     }
 
     /**
@@ -35,7 +37,11 @@ class SchoolController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $school = new School;
+        $school->name = $request->input('name');
+        $school->save();
+
+        return redirect()->action('SchoolController@index');
     }
 
     /**
