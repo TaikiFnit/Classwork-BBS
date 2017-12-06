@@ -17,6 +17,9 @@ class CreateLecturesTable extends Migration
             $table->increments('id');
 
             $table->string('name');
+            $table->string('teacher_name');
+            $table->integer('year');
+
             $table->integer("school_id")->unsigned();
             $table->foreign('school_id')->references('id')->on('schools');
 

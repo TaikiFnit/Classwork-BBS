@@ -17,6 +17,7 @@ class CreateBbsTable extends Migration
             $table->increments('id');
 
             $table->string('name');
+            $table->date('date');
             $table->integer("lecture_id")->unsigned();
             $table->foreign('lecture_id')->references('id')->on('lectures');
 

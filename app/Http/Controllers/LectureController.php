@@ -38,6 +38,8 @@ class LectureController extends Controller
     {
         $lecture = new Lecture();
         $lecture->name = $request->input('name');
+        $lecture->teacher_name = $request->input('teacher_name');
+        $lecture->year = $request->input('year');
 
         $school = School::find($school_id);
 

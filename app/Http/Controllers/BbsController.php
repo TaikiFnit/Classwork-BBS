@@ -40,6 +40,7 @@ class BbsController extends Controller
     {
         $bbs = new Bbs();
         $bbs->name = $request->input('name');
+        $bbs->date = $request->input('date');
 
         $lecture = Lecture::find($lecture_id);
 
