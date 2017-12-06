@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Lecture;
+use App\School;
 use Illuminate\Http\Request;
 
 class LectureController extends Controller
@@ -12,9 +13,9 @@ class LectureController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($school)
+    public function index($school_id)
     {
-        return School::find($school)->lectures;
+        return School::find($school_id)->lectures;
     }
 
     /**
@@ -22,9 +23,9 @@ class LectureController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($school_id)
     {
-        //
+        return view('lectures/create', ['school_id'=>$school_id]);
     }
 
     /**
@@ -33,9 +34,16 @@ class LectureController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $school_id)
     {
-        //
+        $lecture = new Lecture();
+        $lecture->name = $request->input('name');
+
+        $school = School::find($school_id);
+
+        $school->lectures()->save($lecture);
+
+        return redirect()->action('LectureController@index', ['$school_id'=> $school_id]);
     }
 
     /**
