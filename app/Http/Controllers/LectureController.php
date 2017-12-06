@@ -43,7 +43,7 @@ class LectureController extends Controller
 
         $school->lectures()->save($lecture);
 
-        return redirect()->action('LectureController@index', ['$school_id'=> $school_id]);
+        return redirect()->action('LectureController@index', ['school_id'=> $school_id]);
     }
 
     /**

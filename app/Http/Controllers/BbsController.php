@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Bbs;
+use App\School;
+use App\Lecture;
 use Illuminate\Http\Request;
 
 class BbsController extends Controller
@@ -12,9 +14,10 @@ class BbsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($school_id, $lecture_id)
     {
-        //
+        $lecture = Lecture::find($lecture_id);
+        return $lecture->bbs;
     }
 
     /**
@@ -22,9 +25,9 @@ class BbsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($school_id, $lecture_id)
     {
-        //
+        return view('bbs/create',  ['school_id'=>$school_id, 'lecture_id'=> $lecture_id]);
     }
 
     /**
@@ -33,9 +36,16 @@ class BbsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $school_id, $lecture_id)
     {
-        //
+        $bbs = new Bbs();
+        $bbs->name = $request->input('name');
+
+        $lecture = Lecture::find($lecture_id);
+
+        $lecture->bbs()->save($bbs);
+
+        return redirect()->action('BbsController@index', ['school_id'=> $school_id, 'lectuer_id'=> $lecture_id]);
     }
 
     /**

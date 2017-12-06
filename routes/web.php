@@ -17,3 +17,4 @@ Route::get('/', function () {
 
 Route::resource('/schools', 'SchoolController');
 Route::resource('/schools.lectures', 'LectureController');
+Route::resource('/schools.lectures.bbs', 'BbsController');
