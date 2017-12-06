@@ -19,7 +19,8 @@ class CommentController extends Controller
     public function index($school_id, $lecture_id, $bbs_id)
     {
         $bbs = Bbs::find($bbs_id);
-        return $bbs->comments;
+        $comments = $bbs->comments;
+        return view('comments/index', ['comments'=> $comments ,'school_id'=> $school_id, 'lecture_id'=> $lecture_id, 'bbs_id'=> $bbs_id]);
     }
 
     /**
@@ -49,6 +50,7 @@ class CommentController extends Controller
         $comment->author_name = $request->input('author_name');
         $comment->body = $request->input('body');
         $comment->school_id = $request->input('school');
+        $comment->group_id = $request->input('group');
 
         $bbs = Bbs::find($bbs_id);
         $bbs->comments()->save($comment);

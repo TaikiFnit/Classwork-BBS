@@ -36,7 +36,7 @@ Create new Comments
 
   <div class="form-group">
     <label for="body">本文 : </label>
-    <textarea type="text" name="body" id="body" placeholder="本文" rows="15" class="form-control">
+    <textarea type="text" name="body" id="body" rows="15" class="form-control">
     </textarea>
   </div>
 

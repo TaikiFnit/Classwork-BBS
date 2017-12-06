@@ -19,5 +19,9 @@
   @endforeach
 </table>
 
+<a href="{{ action('BbsController@create', ['school_id'=> $school_id, 'lecture_id'=> $lecture->id]) }}"><button class="btn btn-link btn-sm">新しくディスカッションを作成する</button></a>
+
+<a href="{{ action('GroupController@create', ['school_id'=> $school_id, 'lecture_id'=> $lecture->id]) }}"><button class="btn btn-link btn-sm">新しくグループを作成する</button></a>
+
 </section>
 @stop

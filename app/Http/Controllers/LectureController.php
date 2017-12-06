@@ -17,7 +17,7 @@ class LectureController extends Controller
     {
         $lectures = School::find($school_id)->lectures;
 
-        return view('lectures/index', ['lectures'=> $lectures]);
+        return view('lectures/index', ['lectures'=> $lectures, 'school_id'=> $school_id]);
     }
 
     /**

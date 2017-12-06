@@ -20,5 +20,7 @@
   @endforeach
 </table>
 
+<a href="{{ action('LectureController@create', ['school_id'=> $school_id]) }}"><button class="btn btn-link btn-sm">新しく授業を登録する</button></a>
+
 </section>
 @stop

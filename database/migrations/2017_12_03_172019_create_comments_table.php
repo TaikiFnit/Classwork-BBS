@@ -17,12 +17,14 @@ class CreateCommentsTable extends Migration
             $table->increments('id');
 
             $table->string('author_name');
-            $table->string('body');
+            $table->longText('body');
 
             $table->integer("school_id")->unsigned();
             $table->foreign('school_id')->references('id')->on('schools');
             $table->integer("bbs_id")->unsigned();
             $table->foreign('bbs_id')->references('id')->on('bbs');
+            $table->integer("group_id")->unsigned();
+            $table->foreign('group_id')->references('id')->on('groups');
 
             $table->timestamps();
         });

@@ -18,7 +18,7 @@ class BbsController extends Controller
     {
         $lecture = Lecture::find($lecture_id);
         $bbs = $lecture->bbs;
-        return view('bbs/index', ['bbs'=> $bbs, 'school_id'=> $school_id]);
+        return view('bbs/index', ['bbs'=> $bbs, 'school_id'=> $school_id, 'lecture'=> $lecture]);
     }
 
     /**
