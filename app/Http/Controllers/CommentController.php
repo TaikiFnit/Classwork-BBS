@@ -42,6 +42,7 @@ class CommentController extends Controller
         $comment = new Comment();
         $comment->author_name = $request->input('author_name');
         $comment->body = $request->input('body');
+        $comment->school_id = $request->input('school');
 
         $bbs = Bbs::find($bbs_id);
         $bbs->comments()->save($comment);
