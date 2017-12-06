@@ -19,3 +19,4 @@ Route::resource('/schools', 'SchoolController');
 Route::resource('/schools.lectures', 'LectureController');
 Route::resource('/schools.lectures.bbs', 'BbsController');
 Route::resource('/schools.lectures.bbs.comments', 'CommentController');
+Route::resource('/schools.lectures.groups', 'GroupController');

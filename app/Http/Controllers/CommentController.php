@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Comment;
 use App\Bbs;
 use App\School;
+use App\Lecture;
+use App\Group;
 use Illuminate\Http\Request;
 
 class CommentController extends Controller
@@ -28,7 +30,11 @@ class CommentController extends Controller
     public function create($school_id, $lecture_id, $bbs_id)
     {
         $schools = School::all();
-        return view('comments/create', ['school_id'=>$school_id, 'lecture_id'=> $lecture_id, 'bbs_id'=> $bbs_id, 'schools'=> $schools]);
+
+        $lecture = Lecture::find($lecture_id);
+        $groups = $lecture->groups;
+
+        return view('comments/create', ['school_id'=>$school_id, 'lecture_id'=> $lecture_id, 'bbs_id'=> $bbs_id, 'schools'=> $schools, 'groups'=> $groups]);
     }
 
     /**
