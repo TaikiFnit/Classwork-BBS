@@ -17,7 +17,8 @@ class BbsController extends Controller
     public function index($school_id, $lecture_id)
     {
         $lecture = Lecture::find($lecture_id);
-        return $lecture->bbs;
+        $bbs = $lecture->bbs;
+        return view('bbs/index', ['bbs'=> $bbs, 'school_id'=> $school_id]);
     }
 
     /**

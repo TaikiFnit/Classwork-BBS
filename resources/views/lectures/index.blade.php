@@ -1,7 +1,7 @@
 @extends('master')
 
 @section('title')
-学校一覧
+授業一覧
 @stop
 
 @section('body')
