@@ -42,8 +42,8 @@ Create new Comments
 
   <input type="hidden" name="_token" value="{{csrf_token()}}">
 
-  <div class="form-group">
-    <input type="submit" value="投稿する" class="btn btn-primary">
+  <div class="form-group submit-group">
+    <input type="submit" value="投稿する" class="btn btn-primary btn-custom">
   </div>
 
 </form>
