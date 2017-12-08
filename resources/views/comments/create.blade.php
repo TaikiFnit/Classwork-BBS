@@ -22,12 +22,12 @@ Create new Comments
 
   <div class="form-group">
     <label for="author_name">名前 : </label>
-    <input type="text" name="author_name" id="author_name" placeholder="名前" class="form-control">
+    <input type="text" name="author_name" id="author_name" placeholder="名前" class="form-control"  required>
   </div>
 
   <div class="form-group">
     <label for="group">グループ名 : </label>
-    <select name="group" class="form-control">
+    <select name="group" class="form-control" required>
       @foreach ($groups as $group)
       <option value="{{ $group->id }}">{{ $group->name }}</option>
       @endforeach
@@ -36,8 +36,7 @@ Create new Comments
 
   <div class="form-group">
     <label for="body">本文 : </label>
-    <textarea type="text" name="body" id="body" rows="15" class="form-control">
-    </textarea>
+    <textarea type="text" name="body" id="body" rows="15" class="form-control" required></textarea>
   </div>
 
   <input type="hidden" name="_token" value="{{csrf_token()}}">
