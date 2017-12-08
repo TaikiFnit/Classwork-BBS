@@ -22,3 +22,16 @@ table a {
   width: 100%;
   height: 100%;
 }
+
+.submit-group {
+  margin-top: 80px;
+}
+
+.btn-custom {
+  width: 100%;
+  height: 50px;
+}
+
+.new-comment-btn {
+  margin-bottom: 60px;
+}
