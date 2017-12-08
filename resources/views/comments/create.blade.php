@@ -36,8 +36,7 @@ Create new Comments
 
   <div class="form-group">
     <label for="body">本文 : </label>
-    <textarea type="text" name="body" id="body" rows="15" class="form-control">
-    </textarea>
+    <textarea type="text" name="body" id="body" rows="15" class="form-control"></textarea>
   </div>
 
   <input type="hidden" name="_token" value="{{csrf_token()}}">
