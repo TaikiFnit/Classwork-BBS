@@ -21,6 +21,13 @@ class BbsController extends Controller
         return view('bbs/index', ['bbs'=> $bbs, 'school_id'=> $school_id, 'lecture'=> $lecture]);
     }
 
+    public function indexApi($school_id, $lecture_id)
+    {
+        $lecture = Lecture::find($lecture_id);
+        $bbs = $lecture->bbs;
+        return $bbs;
+    }
+
     /**
      * Show the form for creating a new resource.
      *
