@@ -24,6 +24,14 @@ class CommentController extends Controller
         return view('comments/index', ['comments'=> $comments ,'school'=> $school, 'lecture_id'=> $lecture_id, 'bbs_id'=> $bbs_id]);
     }
 
+    public function indexApi($school_id, $lecture_id, $bbs_id)
+    {
+        $school = School::find($school_id);
+        $bbs = Bbs::find($bbs_id);
+        $comments = $bbs->comments;
+        return $comments;
+    }
+
     /**
      * Show the form for creating a new resource.
      *

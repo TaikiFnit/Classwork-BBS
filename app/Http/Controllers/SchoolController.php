@@ -19,6 +19,10 @@ class SchoolController extends Controller
         return view('schools/index', ['schools' => $schools]); 
     }
 
+    public function indexApi() {
+        return School::all();
+    }
+
     /**
      * Show the form for creating a new resource.
      *
