@@ -20,6 +20,11 @@ class LectureController extends Controller
         return view('lectures/index', ['lectures'=> $lectures, 'school_id'=> $school_id]);
     }
 
+    public function indexApi($school_id)
+    {
+        return School::find($school_id)->lectures;
+    }
+
     /**
      * Show the form for creating a new resource.
      *

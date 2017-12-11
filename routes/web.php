@@ -20,3 +20,12 @@ Route::resource('/schools.lectures', 'LectureController');
 Route::resource('/schools.lectures.bbs', 'BbsController');
 Route::resource('/schools.lectures.bbs.comments', 'CommentController');
 Route::resource('/schools.lectures.groups', 'GroupController');
+
+Route::get('/api/v1/schools', 'SchoolController@indexApi');
+Route::get('/api/v1/schools/{school}/lectures', 'LectureController@indexApi');
+Route::get('/api/v1/schools/{school}/lectures/{lecture}/bbs', 'BbsController@indexApi');
+Route::get('/api/v1/schools/{school}/lectures/{lecture}/bbs/{bbs}/comments', 'CommentController@indexApi');
+
+
+
+
