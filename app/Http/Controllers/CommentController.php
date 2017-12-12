@@ -29,6 +29,11 @@ class CommentController extends Controller
         $school = School::find($school_id);
         $bbs = Bbs::find($bbs_id);
         $comments = $bbs->comments;
+
+        foreach ($comments as $key => $comment) {
+            $comments[$key]["group_name"] = Group::find($comment->group_id)->name;
+        }
+
         return $comments;
     }
 
