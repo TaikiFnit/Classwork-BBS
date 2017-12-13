@@ -8,6 +8,7 @@ use App\School;
 use App\Lecture;
 use App\Group;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 
 class CommentController extends Controller
 {
@@ -20,8 +21,17 @@ class CommentController extends Controller
     {
         $school = School::find($school_id);
         $bbs = Bbs::find($bbs_id);
-        $comments = $bbs->comments;
-        return view('comments/index', ['comments'=> $comments ,'school'=> $school, 'lecture_id'=> $lecture_id, 'bbs_id'=> $bbs_id]);
+        $groups = Lecture::find($lecture_id)->groups;
+
+        $filter_group_id = Input::get('group_id');
+
+        if ( $filter_group_id != null ) {
+            $comments = $bbs->comments->where("group_id", $filter_group_id);
+        } else {
+            $comments = $bbs->comments;
+        }
+
+        return view('comments/index', ['comments'=> $comments, 'groups'=> $groups, 'school'=> $school, 'lecture_id'=> $lecture_id, 'bbs_id'=> $bbs_id]);
     }
 
     public function indexApi($school_id, $lecture_id, $bbs_id)

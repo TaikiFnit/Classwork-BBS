@@ -17,6 +17,7 @@ class GroupController extends Controller
     {
         $lecture = Lecture::find($lecture_id);
         $groups = $lecture->groups;
+
         return view('groups/index', ['groups'=> $groups, 'lecture'=> $lecture, 'school_id'=> $school_id]);
     }
 
