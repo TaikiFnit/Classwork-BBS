@@ -29,5 +29,7 @@
 
 <a href="{{ action('GroupController@create', ['school_id'=> $school->id, 'lecture_id'=> $lecture->id]) }}"><button class="btn btn-link btn-sm">新しくグループを作成する</button></a>
 
+<a href="{{ action('GroupController@index', ['school_id'=> $school->id, 'lecture_id'=> $lecture->id]) }}"><button class="btn btn-link btn-sm">グループ一覧</button></a>
+
 </section>
 @stop
