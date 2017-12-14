@@ -12,15 +12,6 @@ Create new Comments
 <form action="{{ action('CommentController@store', ['school_id'=> $school_id, 'lecture_id'=> $lecture_id, 'bbs_id'=> $bbs_id]) }}" method="POST">
 
   <div class="form-group">
-    <label for="school">学校名 : </label>
-    <select name="school" id="school" class="form-control">
-      @foreach ($schools as $school)
-      <option value="{{ $school->id }}">{{ $school->name }}</option>
-      @endforeach
-    </select>
-  </div>
-
-  <div class="form-group">
     <label for="author_name">名前 : </label>
     <input type="text" name="author_name" id="author_name" placeholder="名前" class="form-control"  required>
   </div>
