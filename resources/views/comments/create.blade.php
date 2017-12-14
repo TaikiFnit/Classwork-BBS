@@ -6,10 +6,17 @@ Create new Comments
 
 @section('body')
 
+<ol class="breadcrumb container">
+  <li class="breadcrumb-item"><a href="{{ action('SchoolController@index') }}">{{ $school->name }}</a></li>
+  <li class="breadcrumb-item"><a href="{{ action('LectureController@index', ['school_id'=> $school->id]) }}">{{ $lecture->name }}</a></li>
+  <li class="breadcrumb-item"><a href="{{ action('BbsController@index', ['school_id'=> $school->id, 'lecture_id'=> $lecture->id]) }}">{{ $bbs->name }}</a></li>
+  <li class="breadcrumb-item active">コメント作成</li>
+</ol>
+
 <section class="container">
 <h1>コメントを投稿する</h1>
 
-<form action="{{ action('CommentController@store', ['school_id'=> $school_id, 'lecture_id'=> $lecture_id, 'bbs_id'=> $bbs_id]) }}" method="POST">
+<form action="{{ action('CommentController@store', ['school_id'=> $school->id, 'lecture_id'=> $lecture->id, 'bbs_id'=> $bbs->id]) }}" method="POST">
 
   <div class="form-group">
     <label for="author_name">名前 : </label>

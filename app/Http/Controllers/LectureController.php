@@ -15,9 +15,10 @@ class LectureController extends Controller
      */
     public function index($school_id)
     {
-        $lectures = School::find($school_id)->lectures;
+        $school = School::find($school_id);
+        $lectures = $school->lectures;
 
-        return view('lectures/index', ['lectures'=> $lectures, 'school_id'=> $school_id]);
+        return view('lectures/index', ['lectures'=> $lectures, 'school'=> $school]);
     }
 
     public function indexApi($school_id)
@@ -32,7 +33,8 @@ class LectureController extends Controller
      */
     public function create($school_id)
     {
-        return view('lectures/create', ['school_id'=>$school_id]);
+        $school = School::find($school_id);
+        return view('lectures/create', ['school'=>$school]);
     }
 
     /**

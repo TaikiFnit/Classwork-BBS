@@ -16,9 +16,10 @@ class BbsController extends Controller
      */
     public function index($school_id, $lecture_id)
     {
+        $school = School::find($school_id);
         $lecture = Lecture::find($lecture_id);
         $bbs = $lecture->bbs;
-        return view('bbs/index', ['bbs'=> $bbs, 'school_id'=> $school_id, 'lecture'=> $lecture]);
+        return view('bbs/index', ['bbs'=> $bbs, 'school'=> $school, 'lecture'=> $lecture]);
     }
 
     public function indexApi($school_id, $lecture_id)
@@ -35,7 +36,9 @@ class BbsController extends Controller
      */
     public function create($school_id, $lecture_id)
     {
-        return view('bbs/create',  ['school_id'=>$school_id, 'lecture_id'=> $lecture_id]);
+        $school = School::find($school_id);
+        $lecture = Lecture::find($lecture_id);
+        return view('bbs/create',  ['school'=>$school, 'lecture'=> $lecture]);
     }
 
     /**

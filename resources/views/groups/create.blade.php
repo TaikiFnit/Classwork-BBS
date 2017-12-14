@@ -6,10 +6,16 @@ Create new Group
 
 @section('body')
 
-<section class="container">
-<h1><a href="{{ action('BbsController@index', ['school_id'=>$school_id, 'lecture_id'=>$lecture->id]) }}">{{ $lecture->name }}</a>のグループを作成する</h1>
+<ol class="breadcrumb container">
+  <li class="breadcrumb-item"><a href="{{ action('SchoolController@index') }}">{{ $school->name }}</a></li>
+  <li class="breadcrumb-item"><a href="{{ action('LectureController@index', ['school_id'=> $school->id]) }}">{{ $lecture->name }}</a></li>
+  <li class="breadcrumb-item active">グループ作成</li>
+</ol>
 
-<form action="{{ action('GroupController@store', ['school_id'=> $school_id, 'lecture_id'=> $lecture->id]) }}" method="POST">
+<section class="container">
+<h1><a href="{{ action('BbsController@index', ['school_id'=>$school->id, 'lecture_id'=>$lecture->id]) }}">{{ $lecture->name }}</a>のグループを作成する</h1>
+
+<form action="{{ action('GroupController@store', ['school_id'=> $school->id, 'lecture_id'=> $lecture->id]) }}" method="POST">
 
   <div class="form-group">
     <label for="name">グループ名 : </label><input type="text" name="name" placeholder="グループ名" class="form-control form-control-lg" required>

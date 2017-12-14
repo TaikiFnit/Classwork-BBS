@@ -6,10 +6,18 @@
 
 @section('body')
 
+<ol class="breadcrumb container">
+  <li class="breadcrumb-item"><a href="{{ action('SchoolController@index') }}">{{ $school->name }}</a></li>
+  <li class="breadcrumb-item"><a href="{{ action('LectureController@index', ['school_id'=> $school->id]) }}">{{ $lecture->name }}</a></li>
+  <li class="breadcrumb-item"><a href="{{ action('BbsController@index', ['school_id'=> $school->id, 'lecture_id'=> $lecture->id]) }}">{{ $bbs->name }}</a></li>
+  <li class="breadcrumb-item active">コメント一覧</li>
+</ol>
+
 <section class="container">
-<a href="{{ action('CommentController@create', ['school'=> $school->id, 'lecture_id'=> $lecture_id, 'bbs_id'=> $bbs_id]) }}"><button class="btn btn-info btn-custom new-comment-btn">新しくコメントを投稿する</button></a>
 
 <h1>コメント一覧</h1>
+
+<a href="{{ action('CommentController@create', ['school'=> $school->id, 'lecture_id'=> $lecture->id, 'bbs_id'=> $bbs->id]) }}"><button class="btn btn-info btn-custom new-comment-btn">新しくコメントを投稿する</button></a>
 
 <h4>{{ $school->name }}の投稿</h4>
 <div class="row">

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\School;
 use App\Group;
 use App\Lecture;
 use Illuminate\Http\Request;
@@ -15,10 +16,11 @@ class GroupController extends Controller
      */
     public function index($school_id, $lecture_id)
     {
+        $school = School::find($school_id);
         $lecture = Lecture::find($lecture_id);
         $groups = $lecture->groups;
 
-        return view('groups/index', ['groups'=> $groups, 'lecture'=> $lecture, 'school_id'=> $school_id]);
+        return view('groups/index', ['groups'=> $groups, 'lecture'=> $lecture, 'school'=> $school]);
     }
 
     /**
@@ -28,8 +30,9 @@ class GroupController extends Controller
      */
     public function create($school_id, $lecture_id)
     {
+        $school = School::find($school_id);
         $lecture = Lecture::find($lecture_id);
-        return view('groups/create', ['school_id'=> $school_id, 'lecture'=> $lecture]);
+        return view('groups/create', ['school'=> $school, 'lecture'=> $lecture]);
     }
 
     /**

@@ -6,10 +6,15 @@ Create new Lecture
 
 @section('body')
 
+<ol class="breadcrumb container">
+  <li class="breadcrumb-item"><a href="{{ action('SchoolController@index') }}">{{ $school->name }}</a></li>
+  <li class="breadcrumb-item active">授業登録</li>
+</ol>
+
 <section class="container">
 <h1>授業を登録</h1>
 
-<form action="{{ action('LectureController@store', ['school_id'=> $school_id]) }}" method="POST">
+<form action="{{ action('LectureController@store', ['school_id'=> $school->id]) }}" method="POST">
   <div class="form-group">
     <label for="name">授業名 : </label><input type="text" name="name" id="name" placeholder="Name" class="form-control form-control-lg" required>
   </div>

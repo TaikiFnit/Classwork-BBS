@@ -21,7 +21,8 @@ class CommentController extends Controller
     {
         $school = School::find($school_id);
         $bbs = Bbs::find($bbs_id);
-        $groups = Lecture::find($lecture_id)->groups;
+        $lecture = Lecture::find($lecture_id);
+        $groups = $lecture->groups;
 
         $filter_group_id = Input::get('group_id');
 
@@ -31,7 +32,7 @@ class CommentController extends Controller
             $comments = $bbs->comments;
         }
 
-        return view('comments/index', ['comments'=> $comments, 'groups'=> $groups, 'school'=> $school, 'lecture_id'=> $lecture_id, 'bbs_id'=> $bbs_id]);
+        return view('comments/index', ['comments'=> $comments, 'groups'=> $groups, 'school'=> $school, 'lecture'=> $lecture, 'bbs'=> $bbs]);
     }
 
     public function indexApi($school_id, $lecture_id, $bbs_id)
@@ -54,12 +55,14 @@ class CommentController extends Controller
      */
     public function create($school_id, $lecture_id, $bbs_id)
     {
-        $schools = School::all();
-
+        $school = School::find($school_id);
         $lecture = Lecture::find($lecture_id);
+        $bbs = Bbs::find($bbs_id);
+
+        $schools = School::all();
         $groups = $lecture->groups;
 
-        return view('comments/create', ['school_id'=>$school_id, 'lecture_id'=> $lecture_id, 'bbs_id'=> $bbs_id, 'schools'=> $schools, 'groups'=> $groups]);
+        return view('comments/create', ['school'=>$school, 'lecture'=> $lecture, 'bbs'=> $bbs, 'schools'=> $schools, 'groups'=> $groups]);
     }
 
     /**

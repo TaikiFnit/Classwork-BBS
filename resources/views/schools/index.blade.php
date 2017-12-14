@@ -6,6 +6,11 @@
 
 @section('body')
 
+<ol class="breadcrumb container">
+  <li class="breadcrumb-item active">学校一覧</li>
+</ol>
+
+
 <section class="container">
 <h1>学校一覧</h1>
 
